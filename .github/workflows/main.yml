@@ -8,6 +8,9 @@ jobs:
     - name: Hello world action step
       id: hello
       uses: swagcurity/ansible-action@master
+      run: |
+        whoami
+        ansible --version
       with:
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
