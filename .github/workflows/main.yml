@@ -2,6 +2,7 @@ on: [push]
 
 jobs:
   container_job:
+    runs-on: ubuntu-latest
     name: Container tryage
     container:
       image: williamyeh/ansible:alpine3-onbuild
@@ -13,7 +14,7 @@ jobs:
       - name: Test action 1
         run: ls -lR /tmp
       - name: test ansible
-        run: ansible --versions
+        run: ansible --version
 
     # - name: Hello world action step
     #   id: hello
