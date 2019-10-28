@@ -8,10 +8,9 @@ jobs:
     - name: Hello world action step
       id: hello
       uses: swagcurity/ansible-action@master
-      run: |
-        whoami
-        ansible --version
       with:
+        entrypoint: /bin/echo
+        args: The ${{ github.event_name }} event triggered this step.
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
     - name: Get the output time
