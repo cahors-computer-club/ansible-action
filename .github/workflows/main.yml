@@ -1,9 +1,8 @@
 on: [push]
 
 jobs:
-  hello_world_job:
-    runs-on: ubuntu-latest
-    name: A job to say hello
+  container_job:
+    name: Container tryage
     container:
       image: williamyeh/ansible:alpine3-onbuild
       env:
@@ -13,6 +12,8 @@ jobs:
     steps:
       - name: Test action 1
         run: ls -lR /tmp
+      - name: test ansible
+        run: ansible --versions
 
     # - name: Hello world action step
     #   id: hello
