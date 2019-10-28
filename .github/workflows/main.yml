@@ -12,7 +12,7 @@ jobs:
         - ./:/tmp
     steps:
       - name: Test action 1
-        runs: ls -lR /tmp
+        run: ls -lR /tmp
 
     # - name: Hello world action step
     #   id: hello
