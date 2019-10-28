@@ -10,10 +10,14 @@ jobs:
     - name: Login to the registry
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p'${{ secrets.DOCKER_PASSWORD }}'
     - name: Build the Docker image
-      run: docker build . --file Dockerfile -t opussolutions/ansible:latest
-    - name: retrieve ansible version
+      run: docker build . --file Dockerfile -t opussolutions/ansible
+    - name: Push Docker Image
       run: |
-        export ANSIBLE_VERSION=$(docker run -t opussolutions/ansible:latest ansible --version | head -n 1 | awk '{ print $2 }')
+        export ANSIBLE_VERSION=$(docker run -t opussolutions/ansible ansible --version | head -n 1 | awk '{ print $2 }')
         echo $ANSIBLE_VERSION
+        docker tag opussolutions/ansible opussolutions/ansible:$(ANSIBLE_VERSION)
+        docker tag opussolutions/ansible opussolutions/ansible:latest
+        docker push opussolutions/ansible:$(ANSIBLE_VERSION)
+        docker push opussolutions/ansible:latest
       shell: bash
     
