@@ -10,9 +10,9 @@ jobs:
         TEST_ENV: ENV_VAL
       volumes:
         - ./:/tmp
-      steps:
-        - name: Test action 1
-          runs: ls -lR /tmp
+    steps:
+      - name: Test action 1
+        runs: ls -lR /tmp
 
     # - name: Hello world action step
     #   id: hello
