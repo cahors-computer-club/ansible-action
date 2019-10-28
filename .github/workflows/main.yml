@@ -13,7 +13,7 @@ jobs:
       run: docker build . --file Dockerfile -t opussolutions/ansible
     - name: Push Docker Image
       run: |
-        export ANSIBLE_VERSION=$(docker run -t opussolutions/ansible ansible --version | head -n 1 | awk '{ print $2 }')
+        export ANSIBLE_VERSION=$(docker run -t opussolutions/ansible ansible --version | head -n 1 | awk '{$2=$2;print $2}')
         echo $ANSIBLE_VERSION
         docker tag opussolutions/ansible opussolutions/ansible:$ANSIBLE_VERSION
         docker tag opussolutions/ansible opussolutions/ansible:latest
